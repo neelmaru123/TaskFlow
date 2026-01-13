@@ -32,9 +32,12 @@ function DisplayCard({ card, index, setCards }: DisplayCardProps) {
   const [labels, setLabels] = useState<Label[]>([]);
 
   useEffect(() => {
-    const storedLabels: Label[] = JSON.parse(
-      localStorage.getItem("labels") || "[]"
-    );
+    const labels = localStorage.getItem("labels");
+
+    if(!labels) return;
+
+    const storedLabels: Label[] = JSON.parse(labels) as Label[];
+    
     const filteredLabels = storedLabels.filter((label) =>
       card.labels.includes(label.id)
     );
