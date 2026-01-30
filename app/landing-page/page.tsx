@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { FaChartLine, FaCheckCircle, FaTasks, FaUsers } from "react-icons/fa";
 
 type CurrentUser = {
   id: number;
@@ -26,7 +27,7 @@ export default function Home() {
   }
 
   return (
-    <main className="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 min-h-screen">
+    <main className="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 min-h-screen h-auto">
       {/* Hero Section */}
       <section className="flex flex-col justify-center items-center gap-8 px-8 md:px-16 py-20 md:py-32 text-center">
         <h2 className="text-4xl md:text-6xl font-bold text-white leading-tight">
@@ -50,7 +51,7 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      {/* <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-8 md:px-16 py-20">
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-8 md:px-16 py-20">
         {[
           {
             icon: FaTasks,
@@ -82,23 +83,23 @@ export default function Home() {
             <p className="text-slate-400">{feature.description}</p>
           </div>
         ))}
-      </section> */}
+      </section>
 
       {/* CTA Section */}
-      {/* <section className="bg-slate-800 bg-opacity-50 mx-8 md:mx-16 my-20 rounded-lg p-12 border border-slate-700 text-center">
+      <section className="bg-slate-800 bg-opacity-50 mx-8 md:mx-16 my-20 rounded-lg p-12 border border-slate-700 text-center">
         <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
           Ready to transform your workflow?
         </h3>
         <p className="text-slate-400 mb-8 max-w-xl mx-auto">
           Join thousands of teams already using TaskFlow to organize their work and improve collaboration.
         </p>
-        <Link
-          href="/signUp"
+        <button
+        onClick={handleGetStrated}
           className="inline-block bg-slate-400 hover:bg-slate-500 text-slate-950 font-bold py-3 px-8 rounded-lg transition"
         >
           Start Your Free Trial
-        </Link>
-      </section> */}
+        </button>
+      </section>
 
       {/* Footer */}
       <footer className="bg-slate-950 border-t border-slate-700 px-8 md:px-16 py-12 text-center text-slate-500">

@@ -33,9 +33,8 @@ export default function Page() {
     if (typeof window === "undefined") return;
 
     const storedUser = localStorage.getItem("currentuser");
-    const user: User | null = storedUser === undefined
-      ? (JSON.parse(storedUser) as User)
-      : null;
+    const user: User | null =
+      storedUser === undefined ? (JSON.parse(storedUser) as User) : null;
 
     if (user) router.replace("/");
   }, [router]);
@@ -49,11 +48,11 @@ export default function Page() {
     const newError = { email: "", password: "", error: "" };
 
     if (!formData.email.trim()) {
-      newError.email = "Email is required";
+      setError({ ...newError, email: "Email is required" });
     }
 
     if (!formData.password) {
-      newError.password = "Password is required";
+      setError({ ...newError, password: "Password is required" });
     }
 
     const storedUsers = localStorage.getItem("users");
@@ -64,7 +63,7 @@ export default function Page() {
     const user = users.find((u) => u.email === formData.email);
 
     if (!user) {
-      toast.error("User Not found !!")
+      toast.error("User Not found !!");
       return;
     }
 
@@ -72,8 +71,6 @@ export default function Page() {
       formData.password,
       user.password
     );
-
-
 
     if (!isPasswordMatch) {
       newError.password = "Wrong password!";

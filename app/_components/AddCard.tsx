@@ -7,7 +7,6 @@ import toast from "react-hot-toast";
 import { FiTrash2 } from "react-icons/fi";
 import type { Card } from "@/app/_services/types";
 
-
 type Label = {
   id: number;
   name: string;
@@ -72,7 +71,7 @@ function AddCard({
 
   useEffect(() => {
     const raw = localStorage.getItem("labels");
-    const storedLabels: Label[] = raw ? JSON.parse(raw) as Label[] : [];
+    const storedLabels: Label[] = raw ? (JSON.parse(raw) as Label[]) : [];
     setLabels(storedLabels);
   }, []);
 
@@ -97,6 +96,13 @@ function AddCard({
   function handleSubmit(): void {
     if (!form.title.trim()) {
       setError("Title is required");
+      return;
+    }
+
+    const dateStr = new Date().toLocaleDateString("en-CA");
+
+    if (form.dueDate < dateStr) {
+      setError("Date can not privious from today");
       return;
     }
 
@@ -170,13 +176,14 @@ function AddCard({
           />
         </div>
 
+        {error && <span className="text-red-600 text-center">{error}</span>}
+
         <input
           placeholder="Card title"
           className="w-full mb-2 p-2 rounded bg-slate-800 text-white outline-none"
           onChange={(e) => setForm({ ...form, title: e.target.value })}
           value={form.title}
         />
-        {error && <span className="text-red-600">{error}</span>}
 
         <textarea
           placeholder="Description"

@@ -9,13 +9,10 @@ type RootLayoutProps = {
 };
 
 
-export default function RootLayout({ children } : RootLayoutProps) {
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <head>
-        <title>TaskFlow</title>
-      </head>
-      <body className="antialiased min-h-screen flex flex-col bg-slate-900">
+      <body className="antialiased bg-slate-900 h-screen">
         {children}
         <Toaster
           position="top-right"
@@ -31,3 +28,4 @@ export default function RootLayout({ children } : RootLayoutProps) {
     </html>
   );
 }
+

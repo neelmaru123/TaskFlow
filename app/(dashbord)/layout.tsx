@@ -33,7 +33,7 @@ function DashboardLayout({ children }: DashboardLayoutProps) {
             <DashboardSidebar />
           </aside>
 
-          <main className="flex-1 bg-slate-900 overflow-y-auto">
+          <main className="flex-1 bg-slate-900 no-scrollbar min-h-0 overflow-x-auto scrollbar-hide">
             {children}
           </main>
         </div>

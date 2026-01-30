@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 import { Droppable } from "react-beautiful-dnd";
 import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
@@ -52,7 +52,6 @@ function DisplayList({
   // }, []);
 
   useEffect(() => {
-    console.log("called");
     if (isEditListOpen) {
       inputRef.current?.focus();
     }
@@ -107,6 +106,8 @@ function DisplayList({
 
     setEditingListId(null);
   }
+
+  const handleDisplayAddCard = useCallback(() => setDisplayAddCard(false), [setDisplayAddCard])
 
   return (
     <>
@@ -206,7 +207,7 @@ function DisplayList({
       {displayAddCard && (
         <AddCard
           listId={list.id}
-          onClose={() => setDisplayAddCard(false)}
+          onClose={handleDisplayAddCard}
           onAdd={createCard}
           setCards={setCards}
         />

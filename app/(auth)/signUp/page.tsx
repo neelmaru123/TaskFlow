@@ -54,7 +54,7 @@ function Page() {
 
     if (!formData.username.trim()) {
       newError.username = "Username is required";
-    }
+    } 
 
     if (!formData.contactNumber.trim()) {
       newError.contactNumber = "Contact Number is required";
@@ -70,6 +70,8 @@ function Page() {
 
     if (!formData.password.trim()) {
       newError.password = "Password is required";
+    } else if(formData.password.length < 8) {
+      newError.password = "Password must have minimum 8 charactors"
     }
 
     const storedUsers = localStorage.getItem("users");

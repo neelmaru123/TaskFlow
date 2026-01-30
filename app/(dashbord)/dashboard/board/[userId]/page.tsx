@@ -13,11 +13,6 @@ import { FiEdit, FiTrash2 } from "react-icons/fi";
 import ConfrimDelete from "@/app/_components/ConfrimDelete";
 import type { Card } from "@/app/_services/types";
 
-// type Board = {
-//   id: number;
-//   title: string;
-// };
-
 type List = {
   id: number;
   boardId: number;
@@ -170,7 +165,7 @@ export default function BoardPage() {
   return (
     <div className="md:ps-10 md:py-7 mt-5">
       <div className="flex justify-between md:justify-start px-4 py-4">
-        {isEditBoardTitle ? (
+        {isEditBoardTitle ? ( 
           <div className="relative">
             <input
               ref={boardTitleRef}
@@ -227,7 +222,7 @@ export default function BoardPage() {
       </div>
 
       <DragDropContext onDragEnd={handleDragEnd}>
-        <div className="flex flex-col items-center md:items-start md:flex-row gap-4 overflow-x-auto">
+        <div className="flex flex-col items-center md:items-start md:flex-row gap-4">
           {lists.map((list) => (
             <DisplayList
               key={list.id}

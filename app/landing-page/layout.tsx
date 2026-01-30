@@ -11,11 +11,11 @@ type MainLayoutProps = {
   children: ReactNode;
 };
 
-export default function MainLayout({ children } : MainLayoutProps) {
+export default function MainLayout({ children }: MainLayoutProps) {
   return (
-    <>
+    <div className="h-full flex flex-col">
       <Header />
       {children}
-    </>
+    </div>
   );
 }
